@@ -12,13 +12,17 @@ sum-up-numbers-simple([H|T], Result):-
 
 
 /* Question2 */
-sumList([],0).	%Checking, if list is empty result = 0
-sumList([H|T], Result):-	%Predicate for the sum
+sum-up-numbers-general([],0).	%Checking, if list is empty result = 0
+sum-up-numbers-general([H|T], Result):-	    %Predicate for the sum
     number(H),	%check to see if head(first element) is a number
-    sumList(T, Acc),	%recurse call to get the rest of element
+    sum-up-numbers-general(T, Acc),	%recurse call to get the rest of element
 	Result is H + Acc.	%Assign sum to the result
 
-sumList([H|T], Result):-
-    atom(H),
-    sumList(H, Result).
+sum-up-numbers-general([H|T], Result):-
+    atom(H),    %Check to see if a single element
+    sum-up-numbers-general(T, Result).
+
+sum-up-numbers-general([H|T], Result):-
+    sum-up-numbers-general(T, Acc),    %iterate through the elements in the list
+    Result is H + Acc.  % assign the added elements to result.
 
