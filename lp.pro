@@ -28,14 +28,14 @@ sum-up-numbers-general([H|T], N):-
 
 
 /* Question4 */
-common-unique-elements([],_,[]).
-common-unique-elements([X|L1], L2, [X|L3]):-
-    member(L2,X),!,common-unique-elements(L1,L2,L3).
+common-unique-elements([],_,[]).    %Check if list 1 is empty then result is empty
+common-unique-elements([H|L1], L2, [H|L3]):-    %Recursively get the first element in the list
+    member(L2,H),!,common-unique-elements(L1,L2,L3).    %Check to see if 1st element of list one is common to that in list 2
 
 common-unique-elements([_|L1], L2, L3):-
-    common-unique-elements(L1,L2,L3).
+    common-unique-elements(L1,L2,L3).   %Recursively get the rest of the elemnts in the list
     
-member([X|_],X).
-member([_|T], X):- member(T,X).
+member([H|_],H).    %Check if head of each are equal.
+member([_|T], H):- member(T,H).
 
 
