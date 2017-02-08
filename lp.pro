@@ -9,3 +9,16 @@ sum-up-numbers-simple([H|T], Result):-	%predicate that takes a list and gives re
 sum-up-numbers-simple([H|T], Result):-
     \+number(H),	%if its not a number recusive call next element.
     sum-up-numbers-simple(T, Result).
+
+
+/* Question2 */
+sumList([],0).	%Checking, if list is empty result = 0
+sumList([H|T], Result):-	%Predicate for the sum
+    number(H),	%check to see if head(first element) is a number
+    sumList(T, Acc),	%recurse call to get the rest of element
+	Result is H + Acc.	%Assign sum to the result
+
+sumList([H|T], Result):-
+    atom(H),
+    sumList(H, Result).
+
