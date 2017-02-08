@@ -26,6 +26,22 @@ sum-up-numbers-general([H|T], N):-
     sum-up-numbers-general(T, Acc),    %iterate through the elements in the list
     N is H + Acc.  % assign the added elements to result.
 
+/* Question3 */
+min-above-min(L1, L2, N):-  %predicate for the min-above-min
+    listlength(L2, Size),   %check size of list
+    Size < 1,   
+    minList(L1, N).
+
+min-above-min(L1, _, N):-
+    listlength(L1, Size),
+    Size < 1,
+    N is -1.
+
+min-above-min(L1, L2, N):-
+    minList(L2, Min_of_L2),
+    list_above_min(Min_of_L2, L1, New_list),
+    minList(New_list, N).
+
 
 /* Question4 */
 common-unique-elements([],_,[]).    %Check if list 1 is empty then result is empty
