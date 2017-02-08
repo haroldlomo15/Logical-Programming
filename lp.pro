@@ -26,3 +26,14 @@ sum-up-numbers-general([H|T], Result):-
     sum-up-numbers-general(T, Acc),    %iterate through the elements in the list
     Result is H + Acc.  % assign the added elements to result.
 
+
+/* Question4 */
+common-unique-elements([],_,[]).
+common-unique-elements([X|L1], L2, [X|L3]):-
+    member(L2,X),!,common-unique-elements(L1,L2,L3).
+common-unique-elements([_|L1], L2, L3):-
+    common-unique-elements(L1,L2,L3).
+member([X|_],X).
+member([_|T], X):- member(T,X).
+
+
